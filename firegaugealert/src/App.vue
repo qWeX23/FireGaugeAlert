@@ -23,9 +23,21 @@ export default class App extends Vue {
   fireLevelIndex: number;
 
   data() {
-    this.fireLevels = ["Green", "Candle", "Woodwick", "Trashcan", "Dumpster", "Nuclear", "Apocalypse", "You're all fired"];
+    this.fireLevels = ["Green", "Candle", "Woodwick", "Trashcan", "Dumpster", "Nuclear", "Apocalypse", "You're all Fired"];
     this.maxValue = 99
-    this.gaugeValue = 0;
+
+    /*
+    Fire Levels:
+    Green: 0 - 12
+    Candle: 13 - 24
+    WoodWick: 25 - 37
+    Trashcan: 38 - 49
+    Dumpster: 50 - 62
+    Nuclear: 63 - 74
+    Apocalypse: 75 - 87
+    You're all fired 88 - 99
+    */
+    this.gaugeValue = 30;
 
     this.fireLevelIndex = this.getFireLevelIndex(this.fireLevels, this.gaugeValue);
 
