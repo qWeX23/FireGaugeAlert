@@ -25,7 +25,7 @@ export default class App extends Vue {
   data() {
     this.fireLevels = ["Green", "Candle", "Woodwick", "Trashcan", "Dumpster", "Nuclear", "Apocalypse", "You're all fired"];
     this.maxValue = 99
-    this.gaugeValue = 0;
+    this.gaugeValue =  0;
 
     this.fireLevelIndex = this.getFireLevelIndex(this.fireLevels, this.gaugeValue);
 
@@ -63,6 +63,10 @@ export default class App extends Vue {
         ]
       },
     };
+  }
+   async mounted() {
+    const { text } = await (await fetch("/api/GetFireLevel")).json();
+    this.gaugeValue = text;
   }
 
   getFireLevelIndex(fireLevels: string[], gaugeValue: number) {
