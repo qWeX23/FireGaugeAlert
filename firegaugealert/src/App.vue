@@ -37,7 +37,7 @@ export default class App extends Vue {
     Apocalypse: 75 - 87
     You're all fired 88 - 99
     */
-    this.gaugeValue = 80;
+    this.gaugeValue = 55;
 
     this.fireLevelIndex = this.getFireLevelIndex(this.fireLevels, this.gaugeValue);
 
