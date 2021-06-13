@@ -1,13 +1,18 @@
+
+
 module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+  const MongoClient = require('mongodb').MongoClient;
+  const uri = process.env["Mongo"]
+  const client = new MongoClient(uri);
 
-    const name = (req.query.name || (req.body && req.body.name));
-    const responseMessage = name
-        ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
+  await client.connect();
+  const db = client.db("fireGauge");
+  const levelCol = db.collection("level");
 
-    context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: Math.floor(Math.random() * 100)
-    };
+  const level = await levelCol.findOne({});
+  const ass = level["level"];
+  context.res = {
+    body: { "level": level["level"] }
+  }
+
 }
